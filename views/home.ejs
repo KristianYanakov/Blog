@@ -5,20 +5,26 @@
 <% if(locals.posts && locals.posts.length > 0){ %>
     <% for(let i = 0; i < locals.posts.length; i++) { %>
         <% let post = locals.posts[i]; %>
-        <h2><%= post.title %></h2>
-        <p><%= post.content %></p>
-        <form action="/deletePost" method="POST">
-            <input type="hidden" name="postId" value="<%= i %>">
-            <button type="submit">Delete Post</button>
-        </form>
-        <form action="/updatePost" method="GET">
-            <input type="hidden" name="postId" value="<%= i %>">
-            <button type="submit">Update Post</button>
-        </form>
+        <div class="post-card">
+            <h2><%= post.title %></h2>
+            <p><%= post.content %></p>
+            <div class="button-container">
+                <form action="/deletePost" method="POST">
+                    <input type="hidden" name="postId" value="<%= i %>">
+                    <button type="submit">Delete Post</button>
+                </form>
+                <form action="/updatePost" method="GET">
+                    <input type="hidden" name="postId" value="<%= i %>">
+                    <button type="submit">Update Post</button>
+                </form>
+            </div>
+        </div>
     <% } %>
 <% } else{ %>
-    <h2>No Blog Posts Yet</h2>
-    <p>Be the first to create a blog post!</p>
+    <div class="empty-state">
+        <h2>No Blog Posts Yet</h2>
+        <p>Be the first to create a blog post!</p>
+    </div>
 <% } %>
 
 <%- include ('partials/footer.ejs') %>

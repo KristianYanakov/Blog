@@ -12,7 +12,8 @@ const footerYear = new Date().getFullYear();
 let posts = [];
 
 app.get('/', (req, res) => {
-  res.render('home.ejs', { footerYear: footerYear, posts: posts });
+  const displayPosts = posts.reverse();
+  res.render('home.ejs', { footerYear: footerYear, posts: displayPosts });
 });
 
 app.get('/createPost', (req, res) => {
