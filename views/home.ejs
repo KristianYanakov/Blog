@@ -1,6 +1,15 @@
-<%- include ('/partials/header.ejs') %>
+<%- include ('partials/header.ejs') %>
 
+<a href="/createPost">Create a New Blog Post</a>
 
+<% if(locals.posts && locals.posts.length > 0){ %>
+    <% locals.posts.forEach(function(post) { %>
+        <h2><%= post.title %></h2>
+        <p><%= post.content %></p>
+    <% }); %>
+<% } else{ %>
+    <h2>No Blog Posts Yet</h2>
+    <p>Be the first to create a blog post!</p>
+<% } %>
 
-
-<%- include ('/partials/footer.ejs') %>
+<%- include ('partials/footer.ejs') %>

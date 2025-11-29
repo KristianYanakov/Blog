@@ -9,13 +9,25 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const footerYear = new Date().getFullYear();
-app.get('/', (req, res) => {
+let posts = [];
 
-  //res.render('index.ejs', { c: footerYear });
+app.get('/', (req, res) => {
+  res.render('home.ejs', { footerYear: footerYear, posts: posts });
 });
 
+app.get('/createPost', (req, res) => {
+  res.render('createPost.ejs', { footerYear: footerYear });
+});
 
+app.post('/createPost', (req, res) => {
+  const title = req.body.title;
+  const content = req.body.content;
 
+  const post = { title: title, content: content };
+
+  posts.push(post);
+  res.redirect('/');
+});
 
 app.listen(port, () => {
   console.log(`Blog app listening at http://localhost:${port}`);
