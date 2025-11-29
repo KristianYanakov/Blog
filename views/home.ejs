@@ -3,10 +3,15 @@
 <a href="/createPost">Create a New Blog Post</a>
 
 <% if(locals.posts && locals.posts.length > 0){ %>
-    <% locals.posts.forEach(function(post) { %>
+    <% for(let i = 0; i < locals.posts.length; i++) { %>
+        <% let post = locals.posts[i]; %>
         <h2><%= post.title %></h2>
         <p><%= post.content %></p>
-    <% }); %>
+        <form action="/deletePost" method="POST">
+            <input type="hidden" name="postId" value="<%= i %>">
+            <button type="submit">Delete Post</button>
+        </form>
+    <% } %>
 <% } else{ %>
     <h2>No Blog Posts Yet</h2>
     <p>Be the first to create a blog post!</p>

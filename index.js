@@ -24,8 +24,15 @@ app.post('/createPost', (req, res) => {
   const content = req.body.content;
 
   const post = { title: title, content: content };
-
+    console.log(post);
   posts.push(post);
+  res.redirect('/');
+});
+
+app.post('/deletePost', (req, res) => {
+  const id = req.body.postId;
+
+  posts.splice(id, 1);
   res.redirect('/');
 });
 
