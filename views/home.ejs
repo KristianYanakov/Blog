@@ -11,6 +11,10 @@
             <input type="hidden" name="postId" value="<%= i %>">
             <button type="submit">Delete Post</button>
         </form>
+        <form action="/updatePost" method="GET">
+            <input type="hidden" name="postId" value="<%= i %>">
+            <button type="submit">Update Post</button>
+        </form>
     <% } %>
 <% } else{ %>
     <h2>No Blog Posts Yet</h2>

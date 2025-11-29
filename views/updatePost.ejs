@@ -1,0 +1,10 @@
+<%- include ('partials/header.ejs') %>
+
+<form action="/updatePost" method="POST">
+    <input type="hidden" name="postId" value="<%= postId %>">
+    <input type="text" name="title" placeholder="New Blog Post Title" required>
+    <textarea name="content" placeholder="New Blog Post Content" required></textarea>
+    <button type="submit">Update Blog Post</button>
+</form>
+
+<%- include ('partials/footer.ejs') %>
